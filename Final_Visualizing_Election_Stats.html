@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+           DATA 303 Final Project
+        </title>
+
+        <!-- Merriweather Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #8AC7DB;
+                font-family: "Merriweather", serif;
+                line-height: 1.7;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            /* Centered text boxes like your example image */
+            .content-box {
+                background-color: #ADD8E6;
+                max-width: 950px;
+                margin: 25px auto;
+                padding: 28px 36px;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                text-align: left;
+            }
+
+            /* Make headings inside boxes look nice */
+            .content-box h3 {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            /* Clean spacing for lists inside boxes */
+            .content-box ul {
+                margin-top: 12px;
+            }
+
+            /* Optional: make iframe look cleaner on blue background */
+            iframe {
+                border: none;
+                border-radius: 10px;
+            }
+
+            hr {
+                border: none;
+                height: 2px;
+                background: rgba(0, 0, 0, 0.15);
+                margin: 35px auto;
+                max-width: 1050px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 class="center">
+            <strong>Examining the U.S. November 2024 Election through Voter Demographics</strong>
+        </h1>
+
+        <h3 class="center">
+            Caroline Phillips and Israt Farah
+        </h3>
+
+        <div class="content-box">
+            <h3 class="center">Initial Questions:</h3>
+            <p>
+                The purpose of this project is to visualize several voter demographics and election turnout data to determine if there are trends between these demographics and who ends up voting in the election.
+                <br>
+                <br>
+                A few things we wondered about are:
+                <br>
+                1. Can we see significant differences in states’ voter turnouts (out of people registered to vote, who actually voted) between age groups? Do certain geographic regions of the U.S. have higher voter turnout?
+                <br>
+                2. What are the sizes of these racial and age groups? How many people in each racial group belong to every age group? Did the majority of people in every age group vote?
+                <br>
+                3. Are there trends or patterns regarding how race, age, and geographic location affect voter participation? For instance, do young people in a given racial category vote differently based on where in the country (state or region) they live?
+                <br>
+                4. Which demographic categories have the widest disparities between their percentage of the voting-age population versus the total number of votes cast? Are some races or age groups overrepresented or underrepresented within the electorate based on the size of their respective population?
+
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h3 class="center">About the Data:</h3>
+            <p>
+                All datasets used for this project came from the U.S. Census Bureau’s “Voting and Registration in the Election of November 2024” release in April 2025
+                and can be found here: <a href="https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-587.html">Get the Data!</a>
+                <br>
+                <br>
+                We used data from the table cateogires “Reported Voting and Registration, by Race, Hispanic Origin, Sex, and Age: November 2024” and “Reported Voting and Registration of the Total Voting-Age Population, by Age, for States: November 2024”.
+                <br>
+                <br>
+                The races and age groups in our visualizations were determined by what the U.S. Census Bureau made available, so other racial groupings are excluded from the visualizations because we do not have data on these groups. By definition from the U.S. Census Bureau,
+                here are the meanings of the racial groups seen in our visualizations:
+            </p>
+
+            <ul>
+                <li>
+                    <a href="https://www.census.gov/glossary/?term=Race+alone">Race alone</a> - “People who responded to the question on race by indicating only one race are referred to as the race alone population, or the group who reported only one race.”
+                </li>
+                <br>
+                <li>
+                    <a href="https://www.census.gov/glossary/?term=Race+alone+or+in+combination">Race alone or in combination</a> - “The concept "race alone or in combination" includes people who reported a single race alone and people who reported that race in combination with one or more of the other major race groups. The concept "race alone or in combination," therefore, represents the maximum number of people who reported as that race group, either alone or in combination with one or more additional race(s).”
+                    <ol>
+                        **The U.S. Census Bureau also indicates that the sum of people in these “race alone or in combination” categories could be higher than the people in the total population because people can belong to multiple races.
+                    </ol>
+                </li>
+            </ul>
+
+            <p>
+                We decided to keep all racial categories available in these datasets in our visualizations so that we did not exclude multiracial populations. While the data was clean, we had to combine multiple excel files into one dataframe to use in our visualization code. In some cases, we needed to calculate counts of how many people were registered, how many people voted, and percentages for voter turnout as these datasets did not include these specific statistics.
+                All visualizations were completed using Folium and Plotly.
+            </p>
+        </div>
+
+        <hr>
+
+        <div class="center">
+            <iframe src="Age Group Map.html" width="1000px" height="650px"></iframe>
+        </div>
+
+        <div class="content-box">
+            <p>
+                This choropleth map is useful for determining geographic trends in voter turnout for six age groups reported by the U.S. Census Bureau. There is also a search feature that can be used to find specific states of interest. Within an age group, it is easy to determine which states have the lowest voter turnout. It is also interesting to look at the states with the highest and lowest voter turnouts between each age group, which is easy to see by toggling between each group and noting the shade of green.
+                <br>
+                <br>
+                A few interesting observations from this graph about voter turnout in U.S. regions and between age groups:
+                <ul>
+                    <li>For the total voting age population (18+), the southern U.S. states generally have the lowest voter turnout compared to the other U.S. regions. The northern and western U.S. typically have the highest voter turnouts out of all states.</li>
+                    <br>
+                    <li>The older U.S. population (ages 45-64 and 65+) appear to have higher voter turnouts overall compared to the younger U.S. population (18-24 and 35-34). This raises questions as to why there is a discrepancy in voter turnout between age groups, and reveals that it is most important to target the younger generations to ensure they have a similar turnout compared to older generations.</li>
+                </ul>
+            </p>
+        </div>
+
+        <hr>
+
+        <div class="center">
+            <iframe src="Voter Race Scatterplot.html" width="1000px" height="500px"></iframe>
+        </div>
+
+        <div class="content-box">
+            <p>
+                This interactive animated scatterplot depicts the connection of voter registration to voter turnout across different racial groups. Data is separated based on sex. Percentages of registered voters are plotted along the bottom (x-axis), and the percentage of votes cast is plotted on the side (y-axis), making it easy to see how well registered voters actually vote.
+                <br>
+                <br>
+                Race is encoded within the plot by using two different items: color and symbol. This allows for easier reading as well as decreased mental effort when comparing different categories within a race. For example, “White Alone” and “White Alone or in Combination” use the same color to represent the same racial group but have different shapes of markers. This reinforces our understanding of relationships while still showing distinction. The legend has also been intentionally rearranged so that the categories of race that relate to each other are next to each other.
+                <br>
+                <br>
+                Sex was animated into the scatterplot, allowing the user to see two groups at once without crowding the plot. Additionally, this design element allows us to find out if inequities exist and, if so, whether those inequities differ between male and female populations within a racial group. Viewers can use interactive hover data to view the percentage values that correspond to each point in the chart, which enhances the usability of the chart by providing users with both inquisitive analysis and precision in their readings.
+                <br>
+                <br>
+                Overall, this infographic successfully integrates all three types of animations, categorical arrangement, and consistent visual encoding to create a clear yet complex understanding of the difference in voter turnout rates between races, as well as how race and gender factor into the differences in voter turnout rates and create opportunities for further investigation of structural and social causes of these differences among demographic populations.
+            </p>
+        </div>
+
+        <hr>
+
+        <div class="center">
+            <iframe src="Sankey Diagram.html" width="1050px" height="850px"></iframe>
+        </div>
+
+        <div class="content-box">
+            <p>
+                The sankey diagram is useful to see how many people in each racial group belong to each age group, as well as how many people in these age groups ended up voting. You can isolate individual races and their flows to specific age groups and isolate age groups and their flows to whether people voted or didn’t vote. The tooltips will tell you how many people fall into each category. Hovering on any connection will turn the line the color of the node it comes from, which makes it easy to see the connection you are interested in. Additionally, hovering over any node will highlight all connections from that node to other nodes; this is especially useful for seeing the flow from race to age groups and age groups to how many people in a group voted.
+                <br>
+                <br>
+                We can easily tell in this plot that the majority of people in every age group voted in the November 2024 election. The 25 to 44 year old age group has the largest population, which makes sense given this group encompasses 19 years. The largest racial groups are people who identified as white alone, in combination with another race, and/or white alone and not hispanic. Overall, the sankey diagram is helpful to observe how many people fall into these demographics and, at a glance, provides quick conclusions about the distributions of racial and age groups’ participation in the 2024 election.
+            </p>
+        </div>
+
+        <hr>
+
+        <div class="center">
+            <iframe src="Violin Plot.html" width="1000px" height="750px"></iframe>
+        </div>
+
+        <div class="content-box">
+            <p>
+                This violin plot is helpful for tracking trends and differences in voters' turnout based on race from the U.S. Census Bureau's data. The different shapes of the violins make it easy to compare not only the average levels of voter turnout by race, but also the range and concentration of turnout percentages within each group. The addition of embedded boxplots allows us to quickly identify medians and interquartile ranges (IQRs), with tooltip features providing further insight into gender and reported registration percentages.
+                <br>
+                <br>
+                From this plot, here are some of the many observations we made regarding voter turnout by race:
+                <br>
+                Some racial categories have higher turnout levels than others and display higher median values and distributions toward the upper end of the percent scale. On the other hand, other racial groups have lower median turnout levels with much wider distribution, pointing to more variable rates of voter participation. This variability also indicates that there will be differences in voter turnout even among different racial groups.
+                <br>
+                <br>
+                Moreover, the shape of the violins indicates that some racial categories have more consistent levels of turnout than others. Narrow violins are representative of higher consistency in turnout, while wider violins imply wider dispersion and inconsistency in turnout rates among members of that race. These patterns raise important questions about the structural, social, and political factors that may influence voter engagement differently across racial communities. Overall, the visualization underscores the importance of targeted outreach and policy efforts to address disparities in voter turnout and promote more equitable civic participation.
+            </p>
+        </div>
+
+        <hr>
+
+        <div class="center">
+            <iframe src="Heatmap.html" width="1000px" height="800px"></iframe>
+        </div>
+
+        <div class="content-box">
+            <p>
+                The total voter turnout percentages as broken down by age group and by race are visualized through this heatmap. The intensity of color represents the proportion of voters from each demographic group. By plotting age vertically (y-axis) and race horizontally (x-axis), it is easy to quickly compare the turnout of individuals from various age groups within each race, and between different racially based populations. While the visualization does not show registration information directly, there is enough registration information available in the tooltip context so that viewers can differentiate between lower overall turnout due to registration gaps or due to a lower percentage of registered voters actually participating in the election.
+                <br>
+                <br>
+                The tooltips provide robust formatting for simplicity for viewers by displaying race, age group, percentage of the total vote, and percentage of registered voters with one decimal point accuracy. This aids viewers in accurately interpreting the visualization. To further enhance readability, labels on the x and y axes are tilted and margin spacing of the axes is expanded to accommodate longer race labels and ensure all age groups remain legible. Clear trends, such as higher voter turnout among older age groups, are visible in the heatmap; however, the visualization also invites deeper consideration of how social structures and systemic factors shape participation in the electoral process, particularly at the intersection of age and race.
+            </p>
+        </div>
+
+        <hr>
+
+        <div class="content-box">
+            <h3 class="center">Bibliography</h3>
+            <p>
+                “Race alone.” <i>United States Census Bureau,</i> <a href="https://www.census.gov/glossary/?term=Race+alone">https://www.census.gov/glossary/?term=Race+alone.</a>.
+                <br>
+                <br>
+                “Race alone or in combination.” <i>United States Census Bureau,</i> <a href="https://www.census.gov/glossary/?term=Race+alone+or+in+combination">https://www.census.gov/glossary/?term=Race+alone+or+in+combination.</a>.
+                <br>
+                <br>
+                "Voting and Registration in the Election of November 2024." <i>United States Census Bureau, 24 April 2025,</i> <a href="https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-587.html">https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-587.html</a>.
+            </p>
+        </div>
+
+    </body>
+</html>
